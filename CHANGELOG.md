@@ -31,6 +31,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Bumped retroarch to v1.3.4
 - Added retroachievements support to fceunext core
 - Reicast : add multiplayer support
+- Bumped Bluez to 5.37
+- Add support for rpi3 Onboard Bluetooth
 
 ## [4.0.0-beta3][unreleased]
 - Xarcade2jstick button remapped + better support of IPAC encoders

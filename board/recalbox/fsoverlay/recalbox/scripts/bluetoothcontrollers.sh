@@ -1,8 +1,14 @@
 #!/bin/bash                                                                                                                                                                                                                                   
                                                                                                                                                                                                                                               
 killall bluetoothd                                                                                                                                                                                                                            
-bluetoothd -u                                                                                                                                                                                                                                 
-                                                                                                                                                                                                                                              
+# If rpi3, load the firmware for bluetooth manually, and start it
+if [ -f /boot/bcm2710-rpi-3-b.dtb ]; then
+    /usr/bin/hciattach /dev/ttyAMA0 bcm43xx 921600
+    /usr/bin/hciconfig hci0 up 
+fi
+
+/usr/libexec/bluetooth/bluetoothd &
+
 repeat=1                                                                                                                                                                                                                                      
 lag=5                                                                                                                                                                                                                                         
                                                                                                                                                                                                                                               
