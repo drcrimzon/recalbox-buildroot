@@ -72,6 +72,7 @@ ROOTFS_$(2)_COMPRESS_CMD = /root/xz-5.2.2/src/xz/xz -9 -T 8 -C crc32 -c
 else
 ROOTFS_$(2)_COMPRESS_CMD = xz -9 -C crc32 -c
 endif
+endif
 
 $$(BINARIES_DIR)/rootfs.$(1): target-finalize $$(ROOTFS_$(2)_DEPENDENCIES)
 	@$$(call MESSAGE,"Generating root filesystem image rootfs.$(1)")
