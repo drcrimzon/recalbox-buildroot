@@ -1,10 +1,8 @@
 #!/bin/bash                                                                                                                                                                                                                                   
                                                                                                                                                                                                                                               
 killall bluetoothd                                                                                                                                                                                                                            
-killall bluetoothcontrollers.sh
-
-/usr/libexec/bluetooth/bluetoothd &
-
+bluetoothd -u                                                                                                                                                                                                                                 
+                                                                                                                                                                                                                                              
 repeat=1                                                                                                                                                                                                                                      
 lag=5                                                                                                                                                                                                                                         
                                                                                                                                                                                                                                               

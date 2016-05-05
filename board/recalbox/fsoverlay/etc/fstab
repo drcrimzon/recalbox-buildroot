@@ -10,4 +10,3 @@ tmpfs           /var           tmpfs    mode=1777         0      0
 tmpfs           /run           tmpfs    mode=1777         0      0
 sysfs		/sys	       sysfs    defaults	  0	 0
 /dev/mmcblk0p1	/boot		vfat	defaults,ro	  0	 0
-10.1.0.5:/STORAGE /Downloads	nfs	rw,hard,bg,async,rsize=32768,wsize=32768,auto

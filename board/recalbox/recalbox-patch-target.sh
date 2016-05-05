@@ -18,10 +18,13 @@ mkdir -p ${TARGET_DIR}/etc/emulationstation || exit 1
 ln -sf "/recalbox/share_init/system/.emulationstation/es_systems.cfg" "${TARGET_DIR}/etc/emulationstation/es_systems.cfg" || exit 1
 ln -sf "/recalbox/share_init/system/.emulationstation/themes"         "${TARGET_DIR}/etc/emulationstation/themes"         || exit 1
 ln -sf "/recalbox/share/cheats"                                       "${TARGET_DIR}/recalbox/share_init/cheats/custom"   || exit 1
+<<<<<<< HEAD
 ln -sf "/lib/firmware"						      "${TARGET_DIR}/etc/firmware"		   	  || exit 1
 if [ -d /home/kodi ]; then
 cp -R "/home/kodi/*"						      "${TARGET_DIR}/recalbox/share_init/system/.kodi/"	  || exit 1
 fi
+=======
+>>>>>>> parent of aad86af... Bluetooth fixes for broadcom chipset / bluez
 
 rm -f "${TARGET_DIR}/etc/init.d/S50kodi" || exit 1
 
