@@ -9,11 +9,17 @@ case "$1" in
   start)
         enabled="`$systemsetting  -command load -key controllers.bluetooth.enabled`"
         if [ "$enabled" == "1" ];then
-                /recalbox/scripts/bluetoothcontrollers.sh &
+                echo "Starting Bluetooth"
+                start-stop-daemon -S -q -p /var/run/bluetoothcontrollers.pid --exec /recalbox/scripts/bluetoothcontrollers.sh
+                start-stop-daemon -S -q -p /var/run/bluetoothd.pid --exec /usr/libexec/bluetooth/bluetoothd
+                echo "OK"
         fi
         ;;
   stop)
-	killall bluetoothd
+        echo "Stopping Bluetooth"
+        start-stop-daemon -K -q -p /var/run/bluetoothcontrollers.pid --exec /recalbox/scripts/bluetoothcontrollers.sh
+        start-stop-daemon -K -q -p /var/run/bluetoothd.pid --exec /usr/libexec/bluetooth/bluetoothd
+        echo "OK"
 	;;
   restart|reload)
         "$0" stop

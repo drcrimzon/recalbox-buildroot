@@ -7,8 +7,6 @@ if [ -f /boot/bcm2710-rpi-3-b.dtb ]; then
     /usr/bin/hciconfig hci0 up 
 fi
 
-/usr/libexec/bluetooth/bluetoothd &
-
 repeat=1                                                                                                                                                                                                                                      
 lag=5                                                                                                                                                                                                                                         
                                                                                                                                                                                                                                               
@@ -27,7 +25,7 @@ do
         done                                                                                                                                                                                                                                  
                                                                                                                                                                                                                                               
         [ "$skip" == "1" ] && continue                                                                                                                                                                                                        
-        hidd --connect $bt 2>/dev/null &                                                                                                                                                                                                      
+        echo -e 'connect $bt' | bluetoothctl 2>/dev/null &
         waitForMe="$waitForMe $!"                                                                                                                                                                                                             
     done                                                                                                                                                                                                                                      
                                                                                                                                                                                                                                               

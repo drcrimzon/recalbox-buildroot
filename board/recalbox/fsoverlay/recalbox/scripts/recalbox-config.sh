@@ -365,7 +365,7 @@ EOF
 	fi
 fi
 if [[ "$command" == "hcitoolscan" ]]; then
-	killall hidd >> /dev/null
+	killall bluetoothctl >> /dev/null
 	killall hcitool >> /dev/null
 	hcitool scan | tail -n +2
 	exit 0
@@ -388,7 +388,8 @@ if [[ "$command" == "hiddpair" ]]; then
                         echo "SUBSYSTEM==\"input\", ATTRS{uniq}==\"$mac\", MODE=\"0666\", ENV{ID_INPUT_JOYSTICK}=\"1\"" >> "/run/udev/rules.d/99-8bitdo.rules"
                 fi
         fi
-        hidd --connect $mac
+        echo -e "connect $mac" | bluetoothctl
+        #hidd --connect $mac#
         connected=$?
         deviceFile=/var/lib/bluetooth/known_devices
         if [ $connected ]; then
@@ -460,7 +461,7 @@ if [[ "$command" == "storage" ]]; then
 fi
 
 if [[ "$command" == "forgetBT" ]]; then
-   killall -9 hidd
+   killall -9 bluetoothctl
    killall -9 hcitool
    rm -rf /var/lib/bluetooth/*
    exit 0
